@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import TestImage from '../../img/part-img.jpg';
+import PlaceholderImage from '../../img/part-img.jpg';
 
 const PartComponent = styled.div`
    {
@@ -29,7 +29,9 @@ const PartComponent = styled.div`
 
 const PartImage = styled.img`
   height: 200px;
-  width: auto;
+  max-width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
 `;
 
 const PartInfo = styled.div`
@@ -55,9 +57,12 @@ const Description = styled.p`
   margin-bottom: 1rem;
 `;
 
-const Part = ({ partNumber, description }) => (
+const Part = ({ part: { partNumber, description, imageURL } }) => (
   <PartComponent>
-    <PartImage src={TestImage} alt={partNumber} />
+    <PartImage
+      src={imageURL === '' ? PlaceholderImage : imageURL}
+      alt={partNumber}
+    />
     <PartInfo>
       <PartNumber>{partNumber}</PartNumber>
       <Description>{description}</Description>

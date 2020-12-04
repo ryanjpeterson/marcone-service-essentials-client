@@ -6,38 +6,30 @@ import { firestore } from './firebase/firebase.utils';
 import PartsOverview from './components/parts-overview/parts-overview.component';
 
 function App() {
-  const [parts, setParts] = useState([
-    {
-      partNumber: '3',
-      description: 'b54v444',
-    },
-    {
-      partNumber: '2',
-      description: 'b54v444',
-    },
-    {
-      partNumber: '1',
-      description: 'b54v444',
-    },
-  ]);
+  const [parts, setParts] = useState([]);
+
+  const setPartsOnLoad = async () => {
+    if (localStorage.getItem('parts')) {
+      setParts(JSON.parse(localStorage.getItem('parts')));
+    } else {
+      let parts = [];
+      await firestore
+        .collection('parts')
+        .get()
+        .then((querySnapshot) =>
+          querySnapshot.forEach((doc) => parts.push(doc.data()))
+        )
+        .catch((error) => console.log(error));
+
+      setParts(parts);
+      localStorage.setItem('parts', JSON.stringify(parts));
+    }
+  };
 
   useEffect(() => {
-    console.log('App.js render');
-    fetchData();
+    console.log('render');
+    setPartsOnLoad();
   }, []);
-
-  const fetchData = async () => {
-    let parts = [];
-    await firestore
-      .collection('test')
-      .get()
-      .then((querySnapshot) =>
-        querySnapshot.forEach((doc) => parts.push(doc.data()))
-      )
-      .catch((err) => console.log(err));
-
-    setParts(parts);
-  };
 
   return (
     <div className="App">

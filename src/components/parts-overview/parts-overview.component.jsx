@@ -17,11 +17,7 @@ const PartsOverview = ({ parts }) => {
   return (
     <PartsOverviewStyles>
       {parts.map((part) => (
-        <Part
-          key={part.partNumber}
-          partNumber={part.partNumber}
-          description={part.description}
-        />
+        <Part key={part.partNumber} part={part} />
       ))}
     </PartsOverviewStyles>
   );
