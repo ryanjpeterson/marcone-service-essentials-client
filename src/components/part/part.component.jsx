@@ -4,19 +4,30 @@ import TestImage from '../../img/part-img.jpg';
 
 const PartComponent = styled.div`
    {
-    background: #fff;
-    min-width: 250px;
     min-height: 200px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: #fff;
+    border-radius: 5px;
+
+    @media screen and (max-width: 999px) {
+      grid-column: span 6;
+    }
+
+    @media screen and (min-width: 1000px) {
+      grid-column: span 3;
+    }
+
+    @media screen and (min-width: 1400px) {
+      grid-column: span 2;
+    }
   }
 `;
 
 const PartImage = styled.img`
-  background-image: url(${TestImage});
   height: 200px;
   width: auto;
 `;
@@ -47,7 +58,6 @@ const Description = styled.p`
 const Part = ({ partNumber, description }) => (
   <PartComponent>
     <PartImage src={TestImage} alt={partNumber} />
-
     <PartInfo>
       <PartNumber>{partNumber}</PartNumber>
       <Description>{description}</Description>

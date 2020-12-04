@@ -9,7 +9,7 @@ import { partData } from '../../partData';
 export const PartsOverviewStyles = styled.div`
    {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(12, 1fr);
     grid-gap: 1rem;
     padding: 1rem;
   }
