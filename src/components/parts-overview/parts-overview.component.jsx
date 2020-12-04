@@ -4,8 +4,6 @@ import Part from '../part/part.component';
 
 import styled from 'styled-components';
 
-import { partData } from '../../partData';
-
 export const PartsOverviewStyles = styled.div`
    {
     display: grid;
@@ -15,31 +13,7 @@ export const PartsOverviewStyles = styled.div`
   }
 `;
 
-const PartsOverview = () => {
-  const [parts, setParts] = useState([
-    {
-      partNumber: '3',
-      description: 'b54v444',
-    },
-    {
-      partNumber: '2',
-      description: 'b54v444',
-    },
-    {
-      partNumber: '1',
-      description: 'b54v444',
-    },
-  ]);
-
-  const fetchData = () => {
-    setParts(partData);
-  };
-
-  useEffect(() => {
-    console.log('render');
-    setTimeout(fetchData, 2000);
-  }, [parts]);
-
+const PartsOverview = ({ parts }) => {
   return (
     <PartsOverviewStyles>
       {parts.map((part) => (
