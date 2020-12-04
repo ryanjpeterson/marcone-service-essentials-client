@@ -19,15 +19,15 @@ const PartsOverview = () => {
   const [parts, setParts] = useState([
     {
       partNumber: '3',
-      partDescription: 'b54v444',
+      description: 'b54v444',
     },
     {
       partNumber: '2',
-      partDescription: 'b54v444',
+      description: 'b54v444',
     },
     {
       partNumber: '1',
-      partDescription: 'b54v444',
+      description: 'b54v444',
     },
   ]);
 
@@ -46,7 +46,7 @@ const PartsOverview = () => {
         <Part
           key={part.partNumber}
           partNumber={part.partNumber}
-          partDescription={part.partDescription}
+          description={part.description}
         />
       ))}
     </PartsOverviewStyles>
