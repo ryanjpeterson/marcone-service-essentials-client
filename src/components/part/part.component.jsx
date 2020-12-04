@@ -10,8 +10,6 @@ const PartComponent = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: #fff;
-    border-radius: 5px;
 
     @media screen and (max-width: 999px) {
       grid-column: span 6;
@@ -27,11 +25,18 @@ const PartComponent = styled.div`
   }
 `;
 
-const PartImage = styled.img`
+const PartImageContainer = styled.div`
   height: 200px;
-  max-width: 100%;
+  width: 100%;
   padding: 1rem;
   box-sizing: border-box;
+  background: #fff;
+  border-radius: 5px;
+`;
+
+const PartImage = styled.img`
+  max-width: 100%;
+  max-height: 100%;
 `;
 
 const PartInfo = styled.div`
@@ -59,10 +64,12 @@ const Description = styled.p`
 
 const Part = ({ part: { partNumber, description, imageURL } }) => (
   <PartComponent>
-    <PartImage
-      src={imageURL === '' ? PlaceholderImage : imageURL}
-      alt={partNumber}
-    />
+    <PartImageContainer>
+      <PartImage
+        src={imageURL === '' ? PlaceholderImage : imageURL}
+        alt={partNumber}
+      />
+    </PartImageContainer>
     <PartInfo>
       <PartNumber>{partNumber}</PartNumber>
       <Description>{description}</Description>

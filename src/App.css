@@ -9,4 +9,7 @@
   font-family: 'Roboto', sans-serif;
   min-height: 100vh;
   background: #f8f8f8;
+  background-image: url('./img/ServiceEssentialsBG.png');
+  background-size: contain;
+  background-position: center;
 }
